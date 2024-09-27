@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { IconCheck, IconMapPinFilled } from "@tabler/icons-react";
+import { IconMapPinFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
 
@@ -11,7 +11,8 @@ export type AboutTripProps = SliceComponentProps<Content.AboutTripSlice>;
 type HighlightsProps = {
   highlights: AboutTripProps["slice"]["primary"]["sightseeing_highlights"];
   title: string;
-  color: string;
+  bgColor: string;
+  textColor: string;
   cta?: {
     instruction?: string | null;
     copy: string | null;
@@ -23,13 +24,11 @@ type HighlightsProps = {
 const Highlights = ({
   title,
   highlights,
-  color,
+  bgColor,
+  textColor,
   cta,
   className,
 }: HighlightsProps) => {
-  const bgColor = `bg-${color}`;
-  const textColor = `text-${color}`;
-
   return (
     <div className={cn("grid grid-cols-[1fr_2fr] pb-16 mb-16", className)}>
       <div>
@@ -41,7 +40,7 @@ const Highlights = ({
         {cta?.link && cta?.copy && (
           <Link href={cta.link}>
             <Button
-              className={`${bgColor} hover:${bgColor}/80 text-white mt-4 hover:text-white`}
+              className={`${bgColor} hover:${bgColor} text-white mt-4 hover:text-white`}
               variant="outline"
               size="lg"
             >
@@ -76,13 +75,15 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
       <Highlights
         title="Sightseeing highlights"
         highlights={slice.primary.sightseeing_highlights}
-        color="green-700"
+        bgColor="bg-green-700"
+        textColor="text-green-700"
         className="border-b-2"
       />
       <Highlights
         title="Travel highlights"
         highlights={slice.primary.travel_highlights}
-        color="red-700"
+        bgColor="bg-red-700"
+        textColor="text-red-700"
         cta={{
           instruction: slice.primary.travel_cta_description,
           copy: slice.primary.travel_cta,
