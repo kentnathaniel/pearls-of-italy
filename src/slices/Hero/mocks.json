@@ -1,0 +1,65 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "13-Day Italy Sightseeing Tour of Rome, Lake Como and Sorrento"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Discover the Best of Italy, from the ancient treasures of Rome to Renaissance Florence and everything in between. Imagine staying overnight in a renovated Franciscan monastery in Assisi, lapping up the chic lifestyle on Capri, and taking a private guided visit to Pompeii to see a Roman city frozen in time."
+			},
+			"travel": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "13 days, 2 countries and 15 cities"
+			},
+			"accomodation": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "12 nights"
+			},
+			"meals": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "12 Breakfasts, 6 Dinners"
+			},
+			"itinerary": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "View day-by-day trip itinerary"
+			},
+			"trip_code": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "ITBO"
+			},
+			"illustration": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+					"width": 3810,
+					"height": 5715
+				},
+				"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+				"width": 3810,
+				"height": 5715,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

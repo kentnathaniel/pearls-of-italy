@@ -1,0 +1,76 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "travel": {
+          "type": "Text",
+          "config": {
+            "label": "Travel",
+            "placeholder": ""
+          }
+        },
+        "accomodation": {
+          "type": "Text",
+          "config": {
+            "label": "Accomodation",
+            "placeholder": ""
+          }
+        },
+        "meals": {
+          "type": "Text",
+          "config": {
+            "label": "Meals",
+            "placeholder": ""
+          }
+        },
+        "itinerary": {
+          "type": "Text",
+          "config": {
+            "label": "Itinerary",
+            "placeholder": ""
+          }
+        },
+        "trip_code": {
+          "type": "Text",
+          "config": {
+            "label": "Trip code",
+            "placeholder": ""
+          }
+        },
+        "illustration": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
