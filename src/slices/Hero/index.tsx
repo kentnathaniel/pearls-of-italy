@@ -45,7 +45,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container mt-8 relative mx-auto px-8"
+      className="container pt-16 relative mx-auto px-8"
+      id="home-section"
     >
       <div className="flex w-full gap-16">
         {/* {isFilled.image(heroIllustration) && (

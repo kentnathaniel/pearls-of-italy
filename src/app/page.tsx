@@ -31,5 +31,28 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "home");
 
-  return <SliceZone slices={home.data.slices} components={components} />;
+  return (
+    <div>
+      <nav className="h-16 p-4 shadow-sm ">
+        <div className="container mx-auto flex justify-between ">
+          <p className="font-bold text-xl">Pearls of Italy</p>
+          <ul className="flex gap-8">
+            <li>
+              <a href="#home-section">Home</a>
+            </li>
+            <li>
+              <a href="#itinerary-section">Itinerary</a>
+            </li>
+            <li>
+              <a href="#about-section">About</a>
+            </li>
+            <li>
+              <a href="#faq-section">FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <SliceZone slices={home.data.slices} components={components} />;
+    </div>
+  );
 }
