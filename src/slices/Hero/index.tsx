@@ -1,9 +1,8 @@
-import { Content, isFilled } from "@prismicio/client";
+import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import {
   IconBedFilled,
-  IconCalendar,
   IconCalendarFilled,
   IconChevronRight,
   IconMap,

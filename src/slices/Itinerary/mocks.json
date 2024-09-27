@@ -1,0 +1,223 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "price",
+				"type": "Text"
+			},
+			"caption": {
+				"__TYPE__": "FieldContent",
+				"value": "knife",
+				"type": "Text"
+			},
+			"itinerary_list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Welcome To Rome"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Ciao Roma! Explore this imperial city of emperors and senators, gods and goddesses before joining your Travel Director for an introduction to the 'Eternal City'. Arrive at Basilica Santa Maria in Cosmedin for a private after-hours visit to the Mouth of Truth. See the church, crypt and relics of the famous saint of love, Valentine, and learn about the legend of the Mouth of Truth. This evening, enjoy dinner with your travel companions."
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Rome"
+								}
+							],
+							[
+								"arrival_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "appearance",
+									"type": "Text"
+								}
+							],
+							[
+								"welcome",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "series",
+									"type": "Text"
+								}
+							],
+							[
+								"accomodation",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "somewhere",
+									"type": "Text"
+								}
+							],
+							[
+								"included_meals",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "range",
+									"type": "Text"
+								}
+							],
+							[
+								"departure_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "native",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Discover Ancient Rome and the Vatican City"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Rome, Vatican, Rome"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "The Holy See takes center stage today as you join a Local Specialist for an included sightseeing tour in the Vatican Museums. Admire Michelangelo’s magnificent frescoed ceiling in the Sistine Chapel. See the marble masterpiece of the Pietà, housed in the Basilica before crossing the Tiber into Ancient Rome. Enjoy a guided in depth walking experience around the walls of the Colosseum, before seeing Circus Maximus, once the site of celebrated chariot races. This afternoon, enjoy free time to explore Rome. Indulge in an espresso in the Piazza Navona or clamber up the Spanish Steps."
+								}
+							],
+							[
+								"arrival_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "control",
+									"type": "Text"
+								}
+							],
+							[
+								"welcome",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "material",
+									"type": "Text"
+								}
+							],
+							[
+								"accomodation",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "forest",
+									"type": "Text"
+								}
+							],
+							[
+								"included_meals",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "hold",
+									"type": "Text"
+								}
+							],
+							[
+								"departure_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "tell",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Explore the Ruins of Pompeii and Sorrento"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "We journey south to the well-preserved ruins of Pompeii. Here we join a Local Specialist who will share details of the devastation caused by the eruption of Mount Vesuvius as we wander through the ancient paved roads of a city that was frozen in time. Later, we arrive at our hotel in the clifftop town of Sorrento where we’ll dine tonight."
+								}
+							],
+							[
+								"arrival_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "behavior",
+									"type": "Text"
+								}
+							],
+							[
+								"welcome",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "met",
+									"type": "Text"
+								}
+							],
+							[
+								"accomodation",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "official",
+									"type": "Text"
+								}
+							],
+							[
+								"included_meals",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "between",
+									"type": "Text"
+								}
+							],
+							[
+								"departure_transfer",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "new",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

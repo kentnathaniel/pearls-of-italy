@@ -1,0 +1,106 @@
+{
+  "id": "itinerary",
+  "type": "SharedSlice",
+  "name": "Itinerary",
+  "description": "Itinerary",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": ""
+          }
+        },
+        "itinerary_list": {
+          "type": "Group",
+          "config": {
+            "label": "itinerary_list",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "location": {
+                "type": "Text",
+                "config": {
+                  "label": "Location",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              },
+              "illustration": {
+                "type": "Image",
+                "config": {
+                  "label": "Illustration",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "arrival_transfer": {
+                "type": "Text",
+                "config": {
+                  "label": "Arrival Transfer",
+                  "placeholder": ""
+                }
+              },
+              "welcome": {
+                "type": "Text",
+                "config": {
+                  "label": "Welcome",
+                  "placeholder": ""
+                }
+              },
+              "accomodation": {
+                "type": "Text",
+                "config": {
+                  "label": "Accomodation",
+                  "placeholder": ""
+                }
+              },
+              "included_meals": {
+                "type": "Text",
+                "config": {
+                  "label": "Included Meals",
+                  "placeholder": ""
+                }
+              },
+              "departure_transfer": {
+                "type": "Text",
+                "config": {
+                  "label": "Departure Transfer",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

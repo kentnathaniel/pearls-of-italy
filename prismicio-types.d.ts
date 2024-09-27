@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = HeroSlice;
+type PageDocumentDataSlicesSlice = ItinerarySlice | HeroSlice;
 
 /**
  * Content for Home documents
@@ -190,6 +190,168 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *Itinerary → Default → Primary → itinerary_list*
+ */
+export interface ItinerarySliceDefaultPrimaryItineraryListItem {
+  /**
+   * Title field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Location field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Description field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Illustration field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].illustration
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  illustration: prismic.ImageField<never>;
+
+  /**
+   * Arrival Transfer field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].arrival_transfer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  arrival_transfer: prismic.KeyTextField;
+
+  /**
+   * Welcome field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].welcome
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  welcome: prismic.KeyTextField;
+
+  /**
+   * Accomodation field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].accomodation
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  accomodation: prismic.KeyTextField;
+
+  /**
+   * Included Meals field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].included_meals
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  included_meals: prismic.KeyTextField;
+
+  /**
+   * Departure Transfer field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].departure_transfer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  departure_transfer: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Itinerary → Default → Primary*
+ */
+export interface ItinerarySliceDefaultPrimary {
+  /**
+   * Title field in *Itinerary → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Caption field in *Itinerary → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+
+  /**
+   * itinerary_list field in *Itinerary → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  itinerary_list: prismic.GroupField<
+    Simplify<ItinerarySliceDefaultPrimaryItineraryListItem>
+  >;
+}
+
+/**
+ * Default variation for Itinerary Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ItinerarySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ItinerarySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Itinerary*
+ */
+type ItinerarySliceVariation = ItinerarySliceDefault;
+
+/**
+ * Itinerary Shared Slice
+ *
+ * - **API ID**: `itinerary`
+ * - **Description**: Itinerary
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ItinerarySlice = prismic.SharedSlice<
+  "itinerary",
+  ItinerarySliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -219,6 +381,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ItinerarySlice,
+      ItinerarySliceDefaultPrimaryItineraryListItem,
+      ItinerarySliceDefaultPrimary,
+      ItinerarySliceVariation,
+      ItinerarySliceDefault,
     };
   }
 }
