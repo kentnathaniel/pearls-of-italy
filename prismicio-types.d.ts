@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = ItinerarySlice | HeroSlice;
+type PageDocumentDataSlicesSlice = AboutTripSlice | ItinerarySlice | HeroSlice;
 
 /**
  * Content for Home documents
@@ -77,6 +77,155 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = PageDocument;
+
+/**
+ * Item in *AboutTrip → Default → Primary → Sightseeing Highlights*
+ */
+export interface AboutTripSliceDefaultPrimarySightseeingHighlightsItem {
+  /**
+   * Title field in *AboutTrip → Default → Primary → Sightseeing Highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.sightseeing_highlights[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Detail field in *AboutTrip → Default → Primary → Sightseeing Highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.sightseeing_highlights[].detail
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  detail: prismic.KeyTextField;
+}
+
+/**
+ * Item in *AboutTrip → Default → Primary → Travel highlights*
+ */
+export interface AboutTripSliceDefaultPrimaryTravelHighlightsItem {
+  /**
+   * Title field in *AboutTrip → Default → Primary → Travel highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_highlights[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Detail field in *AboutTrip → Default → Primary → Travel highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_highlights[].detail
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  detail: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *AboutTrip → Default → Primary*
+ */
+export interface AboutTripSliceDefaultPrimary {
+  /**
+   * Title field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Sightseeing Highlights field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.sightseeing_highlights[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sightseeing_highlights: prismic.GroupField<
+    Simplify<AboutTripSliceDefaultPrimarySightseeingHighlightsItem>
+  >;
+
+  /**
+   * Travel highlights field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_highlights[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  travel_highlights: prismic.GroupField<
+    Simplify<AboutTripSliceDefaultPrimaryTravelHighlightsItem>
+  >;
+
+  /**
+   * Travel Cta field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_cta
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  travel_cta: prismic.KeyTextField;
+
+  /**
+   * Travel CTA Link field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_cta_link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  travel_cta_link: prismic.KeyTextField;
+
+  /**
+   * Travel CTA Description field in *AboutTrip → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_trip.default.primary.travel_cta_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  travel_cta_description: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AboutTrip Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutTripSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutTripSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutTrip*
+ */
+type AboutTripSliceVariation = AboutTripSliceDefault;
+
+/**
+ * AboutTrip Shared Slice
+ *
+ * - **API ID**: `about_trip`
+ * - **Description**: AboutTrip
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutTripSlice = prismic.SharedSlice<
+  "about_trip",
+  AboutTripSliceVariation
+>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -377,6 +526,12 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AboutTripSlice,
+      AboutTripSliceDefaultPrimarySightseeingHighlightsItem,
+      AboutTripSliceDefaultPrimaryTravelHighlightsItem,
+      AboutTripSliceDefaultPrimary,
+      AboutTripSliceVariation,
+      AboutTripSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

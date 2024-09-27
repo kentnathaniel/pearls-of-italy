@@ -1,0 +1,93 @@
+{
+  "id": "about_trip",
+  "type": "SharedSlice",
+  "name": "AboutTrip",
+  "description": "AboutTrip",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "sightseeing_highlights": {
+          "type": "Group",
+          "config": {
+            "label": "Sightseeing Highlights",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "detail": {
+                "type": "Text",
+                "config": {
+                  "label": "Detail",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "travel_highlights": {
+          "type": "Group",
+          "config": {
+            "label": "Travel highlights",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "detail": {
+                "type": "Text",
+                "config": {
+                  "label": "Detail",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "travel_cta": {
+          "type": "Text",
+          "config": {
+            "label": "Travel Cta",
+            "placeholder": ""
+          }
+        },
+        "travel_cta_link": {
+          "type": "Text",
+          "config": {
+            "label": "Travel CTA Link",
+            "placeholder": ""
+          }
+        },
+        "travel_cta_description": {
+          "type": "Text",
+          "config": {
+            "label": "Travel CTA Description",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "mood",
+				"type": "Text"
+			},
+			"sightseeing_highlights": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "iron",
+									"type": "Text"
+								}
+							],
+							[
+								"detail",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "valuable",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"travel_highlights": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "soldier",
+									"type": "Text"
+								}
+							],
+							[
+								"detail",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "good",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"travel_cta": {
+				"__TYPE__": "FieldContent",
+				"value": "arrow",
+				"type": "Text"
+			},
+			"travel_cta_link": {
+				"__TYPE__": "FieldContent",
+				"value": "sick",
+				"type": "Text"
+			},
+			"travel_cta_description": {
+				"__TYPE__": "FieldContent",
+				"value": "equal",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
