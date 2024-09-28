@@ -30,6 +30,7 @@
     "next": "^14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rfs": "^10.0.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -45,6 +46,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.4",
     "postcss": "^8.4.47",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "slice-machine-ui": "^2.7.1",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.4.5"

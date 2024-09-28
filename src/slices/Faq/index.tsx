@@ -14,14 +14,16 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-32 relative mx-auto px-8 mb-64"
+      className="relative mx-auto mb-64 px-8 pt-32 lg:container"
       id="faq-section"
     >
-      <h1 className="text-3xl font-bold mb-12">{slice.primary.title}</h1>
+      <h1 className="mb-12 text-3xl font-bold">{slice.primary.title}</h1>
       <Accordion type="multiple">
         {slice.primary.questions.map((question, idx) => (
           <AccordionItem key={idx} value={idx.toString()}>
-            <AccordionTrigger>{question.question}</AccordionTrigger>
+            <AccordionTrigger className="text-left font-bold">
+              {question.question}
+            </AccordionTrigger>
             <AccordionContent>
               <PrismicRichText field={question.answer} />
             </AccordionContent>

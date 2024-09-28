@@ -1,3 +1,4 @@
+import { isFilled } from "@prismicio/client";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -45,32 +46,29 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-16 relative mx-auto px-8"
+      className="relative mx-auto px-8 pt-16 lg:container"
       id="home-section"
     >
-      <div className="flex w-full gap-16">
-        {/* {isFilled.image(heroIllustration) && (
-        <PrismicNextImage
-        field={heroIllustration}
-        alt=""
-        fill={true}
-        width={500}
-        height={400}
-        className="pointer-events-none select-none object-cover !w-[300px] !h-[400px] relative"
-        />
-        )} */}
-        <div className="w-[500px] h-[600px] border rounded-md shrink-0 flex items-center justify-center">
-          Placeholder
+      <div className="flex w-full flex-col gap-16 lg:flex-row">
+        <div className="relative h-[400px] w-[100%] shrink-0 overflow-hidden rounded-md lg:h-auto lg:w-[40%]">
+          {isFilled.image(heroIllustration) && (
+            <PrismicNextImage
+              field={heroIllustration}
+              alt=""
+              fill
+              className="pointer-events-none select-none object-cover"
+            />
+          )}
         </div>
-        <div className="grid gap-8 h-fit">
-          <h1 className="text-3xl font-bold ">{slice.primary.title}</h1>
+        <div className="grid h-fit gap-8">
+          <h1 className="text-3xl font-bold">{slice.primary.title}</h1>
           <p>{slice.primary.description}</p>
 
-          <div className="grid gap-8 grid-cols-2 ">
+          <div className="grid grid-cols-2 gap-8">
             {keyFeatures.map((feature, idx) => (
               <div key={idx} className="grid gap-2">
                 <div className="flex items-center gap-2">
-                  <feature.icon className="h-6 w-6 text-primary-500" />
+                  <feature.icon className="text-primary-500 h-6 w-6" />
                   <p className="font-bold">{feature.title}</p>
                 </div>
                 <p>{feature.description}</p>
@@ -78,9 +76,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             ))}
           </div>
 
-          <button className="w-full text-left p-4 rounded-lg border flex items-center gap-4">
+          <button className="flex w-full items-center gap-4 rounded-lg border p-4 text-left">
             <div>
-              <p className="font-bold mb-2">
+              <p className="mb-2 font-bold">
                 Looking to book in a group of 15 or more
               </p>
               <p className="text-neutral-500">
@@ -89,7 +87,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 create a custom trip. Contact us for more details
               </p>
             </div>
-            <IconChevronRight className="shrink-0 w-8 h-8" />
+            <IconChevronRight className="h-8 w-8 shrink-0" />
           </button>
 
           <p>

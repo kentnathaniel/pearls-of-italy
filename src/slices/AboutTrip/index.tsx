@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { IconMapPinFilled } from "@tabler/icons-react";
+import { IconCheck, IconMapPinFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
 
@@ -19,6 +19,7 @@ type HighlightsProps = {
     link: string | null;
   };
   className?: HTMLAttributes<HTMLDivElement>["className"];
+  icon: typeof IconMapPinFilled;
 };
 
 const Highlights = ({
@@ -28,19 +29,29 @@ const Highlights = ({
   textColor,
   cta,
   className,
+  icon,
 }: HighlightsProps) => {
+  const Icon = icon;
+
   return (
-    <div className={cn("grid grid-cols-[1fr_2fr] pb-16 mb-16", className)}>
-      <div>
-        <p className={cn("font-bold text-2xl", textColor)}>{title}</p>
+    <div className={cn("mb-16 grid pb-16 md:grid-cols-[1fr_2fr]", className)}>
+      <div className="mb-8 flex flex-col items-center md:items-start">
+        <p
+          className={cn(
+            "text-center text-2xl font-bold md:mb-0 md:text-left",
+            textColor
+          )}
+        >
+          {title}
+        </p>
         {cta?.instruction && (
-          <p className="text-sm text-neutral-500 mt-2">{cta.instruction}</p>
+          <p className="mt-2 text-sm text-neutral-500">{cta.instruction}</p>
         )}
 
         {cta?.link && cta?.copy && (
           <Link href={cta.link}>
             <Button
-              className={`${bgColor} hover:${bgColor} text-white mt-4 hover:text-white`}
+              className={`${bgColor} hover:${bgColor} mt-4 text-white hover:text-white`}
               variant="outline"
               size="lg"
             >
@@ -49,11 +60,11 @@ const Highlights = ({
           </Link>
         )}
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-4 md:grid-cols-2">
         {highlights.map((highlight, idx) => (
           <div key={idx} className="flex gap-2">
-            <IconMapPinFilled className={cn("shrink-0 w-8 h-8", textColor)} />
-            <p>
+            <Icon className={cn("h-6 w-6 shrink-0 md:h-8 md:w-8", textColor)} />
+            <p className="text-base">
               <strong>{highlight.title}</strong> {highlight.detail}{" "}
             </p>
           </div>
@@ -68,10 +79,12 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-32 relative mx-auto px-8"
+      className="relative mx-auto px-8 pt-32 lg:container"
       id="about-section"
     >
-      <h1 className="text-3xl font-bold mb-12">{slice.primary.title}</h1>
+      <h1 className="mb-12 text-center text-3xl font-bold md:text-left">
+        {slice.primary.title}
+      </h1>
 
       <Highlights
         title="Sightseeing highlights"
@@ -79,6 +92,7 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
         bgColor="bg-green-700"
         textColor="text-green-700"
         className="border-b-2"
+        icon={IconMapPinFilled}
       />
       <Highlights
         title="Travel highlights"
@@ -90,6 +104,7 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
           copy: slice.primary.travel_cta,
           link: slice.primary.travel_cta_link,
         }}
+        icon={IconCheck}
       />
     </section>
   );

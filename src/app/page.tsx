@@ -5,6 +5,8 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import ItalyFlag from "@/assets/italy-flag.png";
+import Image from "next/image";
 
 // This component renders your homepage.
 //
@@ -34,10 +36,20 @@ export default async function Index() {
 
   return (
     <div>
-      <nav className="h-16 p-4 shadow-sm ">
-        <div className="container mx-auto flex justify-between ">
-          <p className="font-bold text-xl">Pearls of Italy</p>
-          <ul className="flex gap-8">
+      <nav className="p-4 shadow-sm">
+        <div className="mx-auto flex justify-between lg:container">
+          <div className="relative">
+            <Image
+              alt="nav-logo"
+              src={ItalyFlag}
+              fill
+              className="-z-10 opacity-30"
+            />
+            <p className="text-2xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)]">
+              Pearls of Italy
+            </p>
+          </div>
+          <ul className="flex gap-8 font-semibold">
             <li>
               <a href="#home-section">Home</a>
             </li>
