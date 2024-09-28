@@ -82,6 +82,16 @@
 									"value": "native",
 									"type": "Text"
 								}
+							],
+							[
+								"experiences",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
 							]
 						]
 					},
@@ -151,6 +161,16 @@
 									"value": "tell",
 									"type": "Text"
 								}
+							],
+							[
+								"experiences",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
 							]
 						]
 					},
@@ -211,6 +231,16 @@
 									"__TYPE__": "FieldContent",
 									"value": "new",
 									"type": "Text"
+								}
+							],
+							[
+								"experiences",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
 								}
 							]
 						]

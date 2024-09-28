@@ -27,9 +27,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Index() {
-  // The client queries content from the Prismic API
   const client = createClient();
-  const home = await client.getByUID("page", "home");
+  const home = await client.getSingle("page", {
+    fetchLinks: "experiences.experience_list",
+  });
 
   return (
     <div>

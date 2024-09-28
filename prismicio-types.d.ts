@@ -4,6 +4,86 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *Experiences → Experience List*
+ */
+export interface ExperiencesDocumentDataExperienceListItem {
+  /**
+   * Title field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Picture field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].picture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  picture: prismic.ImageField<never>;
+
+  /**
+   * Iconic field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: experiences.experience_list[].iconic
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  iconic: prismic.BooleanField;
+}
+
+/**
+ * Content for Experiences documents
+ */
+interface ExperiencesDocumentData {
+  /**
+   * Experience List field in *Experiences*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  experience_list: prismic.GroupField<
+    Simplify<ExperiencesDocumentDataExperienceListItem>
+  >;
+}
+
+/**
+ * Experiences document from Prismic
+ *
+ * - **API ID**: `experiences`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ExperiencesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ExperiencesDocumentData>,
+    "experiences",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | FaqSlice
   | AboutTripSlice
@@ -80,7 +160,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+export type AllDocumentTypes = ExperiencesDocument | PageDocument;
 
 /**
  * Item in *AboutTrip → Default → Primary → Sightseeing Highlights*
@@ -435,6 +515,16 @@ export interface ItinerarySliceDefaultPrimaryItineraryListItem {
   title: prismic.KeyTextField;
 
   /**
+   * Description field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
    * Location field in *Itinerary → Default → Primary → itinerary_list*
    *
    * - **Field Type**: Text
@@ -445,14 +535,14 @@ export interface ItinerarySliceDefaultPrimaryItineraryListItem {
   location: prismic.KeyTextField;
 
   /**
-   * Description field in *Itinerary → Default → Primary → itinerary_list*
+   * Experiences field in *Itinerary → Default → Primary → itinerary_list*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: itinerary.default.primary.itinerary_list[].description
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].experiences
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  description: prismic.KeyTextField;
+  experiences: prismic.ContentRelationshipField<"experiences">;
 
   /**
    * Illustration field in *Itinerary → Default → Primary → itinerary_list*
@@ -603,6 +693,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ExperiencesDocument,
+      ExperiencesDocumentData,
+      ExperiencesDocumentDataExperienceListItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

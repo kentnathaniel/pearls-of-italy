@@ -39,6 +39,13 @@
                   "placeholder": ""
                 }
               },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              },
               "location": {
                 "type": "Text",
                 "config": {
@@ -46,11 +53,14 @@
                   "placeholder": ""
                 }
               },
-              "description": {
-                "type": "Text",
+              "experiences": {
+                "type": "Link",
                 "config": {
-                  "label": "Description",
-                  "placeholder": ""
+                  "label": "Experiences",
+                  "select": "document",
+                  "customtypes": [
+                    "experiences"
+                  ]
                 }
               },
               "illustration": {
