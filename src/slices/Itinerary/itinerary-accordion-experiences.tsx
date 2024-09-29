@@ -51,15 +51,15 @@ const SeeMoreDialog = (
           See more
         </p>
       </DialogTrigger>
-      <DialogContent className="!container lg:!max-w-[90vw] lg:!px-24">
-        <DialogHeader className="!space-y-0 text-2xl font-extrabold">
+      <DialogContent className="!container max-h-screen overflow-y-auto lg:!max-w-[90vw] lg:!px-24">
+        <DialogHeader className="items-center text-2xl font-extrabold md:items-start">
           Tour Highlights
         </DialogHeader>
-        <DialogDescription className="-mt-4 flex items-center gap-2 text-lg">
+        <DialogDescription className="-mt-4 flex flex-col items-center gap-2 text-lg md:flex-row">
           {title}
           <TaglineBadge className={cn(!iconic && "border")} {...props} />
         </DialogDescription>
-        <div className="relative mx-auto mb-2 h-[50vh] w-full max-w-screen-md">
+        <div className="relative mx-auto mb-2 h-[30vh] w-full max-w-screen-md md:h-[50vh]">
           <PrismicNextImage
             alt=""
             field={picture}
@@ -67,7 +67,7 @@ const SeeMoreDialog = (
             className="pointer-events-none select-none rounded-md object-cover"
           />
         </div>
-        <div className="flex flex-col gap-16 lg:flex-row">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
           <div>
             <p className="text-xl font-bold">
               {iconic ? "Highlight Details" : "Experience Info"}
@@ -80,7 +80,7 @@ const SeeMoreDialog = (
               <div>
                 <p className="font-bold">Adults</p>
                 <p className="text-xl font-bold">
-                  {adult_pricing ? `€${adult_pricing?.toFixed(2)}` : "-"}
+                  € {adult_pricing?.toFixed(2) ?? "-"}
                 </p>
               </div>
               <div className="mt-4">
@@ -158,7 +158,7 @@ const ItineraryAccordionExperienceItem = (
           >
             {description}
           </p>
-          {isDescriptionClamped && <SeeMoreDialog {...props} />}
+          {(isDescriptionClamped || !iconic) && <SeeMoreDialog {...props} />}
           <p
             className={cn(
               "mt-auto inline-flex items-center gap-2 text-sm font-bold",

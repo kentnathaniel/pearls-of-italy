@@ -14,7 +14,7 @@ const TaglineBadge = ({
     <Badge
       variant="outline"
       className={cn(
-        "rounded-sm border-0 font-bold",
+        "text-nowrap rounded-sm border-0 font-bold",
         iconic ? "bg-orange-950 text-white" : "bg-white text-black",
         className
       )}
