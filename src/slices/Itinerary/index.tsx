@@ -6,7 +6,6 @@ import {
   Fragment,
   RefAttributes,
   useMemo,
-  useState,
 } from "react";
 import _ from "lodash";
 import { Content, isFilled } from "@prismicio/client";
@@ -23,6 +22,8 @@ import {
 import { cn } from "@/lib/utils";
 import { ItineraryAccordionExperiences } from "./itinerary-accordion-experiences";
 import { ItineraryAccordionHeader } from "./itinerary-accordion-header";
+import { ExpandAllButton } from "@/components/ui/expand-all-button";
+import { useAccordion } from "@/lib/use-accordion";
 
 export type ItineraryProps = SliceComponentProps<Content.ItinerarySlice>;
 
@@ -171,7 +172,10 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
 };
 
 const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
-  const [openItinerary, setOpenItinerary] = useState<number[]>([]);
+  const { isAllOpen, onToggleAccordion, onToggleAllAccordion, isOpen } =
+    useAccordion({
+      size: slice.primary.itinerary_list.length,
+    });
 
   return (
     <section
@@ -185,16 +189,19 @@ const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
         <p className="text-neutral-500">{slice.primary.caption}</p>
       </div>
 
+      <ExpandAllButton
+        isAllOpen={isAllOpen}
+        onToggle={onToggleAllAccordion}
+        className="mr-4 md:mr-0"
+      />
       <div className="grid md:gap-8">
         {slice.primary.itinerary_list.map((item, idx) => (
           <ItineraryAccordion
             data={item}
             key={idx}
             idx={idx}
-            isOpen={openItinerary.includes(idx)}
-            onToggleAccordion={() =>
-              setOpenItinerary((prev) => _.xor(prev, [idx]))
-            }
+            isOpen={isOpen(idx)}
+            onToggleAccordion={() => onToggleAccordion(idx)}
           />
         ))}
       </div>
