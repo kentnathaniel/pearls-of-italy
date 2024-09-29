@@ -38,11 +38,11 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto px-4 pt-8 lg:container lg:px-8 lg:pt-16"
+      className="relative mx-auto px-4 pt-24 lg:container lg:px-8 lg:pt-32"
       id="home-section"
     >
       <div className="flex w-full flex-col gap-8 lg:flex-row lg:gap-16">
-        <div className="relative h-[400px] w-[100%] shrink-0 overflow-hidden rounded-md lg:h-auto lg:w-[40%]">
+        <div className="relative h-[40vh] w-[100%] shrink-0 overflow-hidden rounded-md lg:h-auto lg:w-[40%]">
           {isFilled.image(heroIllustration) && (
             <PrismicNextImage
               field={heroIllustration}
@@ -100,13 +100,16 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </p>
         </div>
       </div>
-      <div className="my-16 flex w-full">
-        <div className="mx-auto grid gap-16 md:grid-cols-3">
+      <div className="my-8 flex w-full md:my-16">
+        <div className="grid gap-8 md:mx-auto md:grid-cols-3 md:gap-16">
           {slice.primary.guarantees.map((guarantee, idx) => {
             const Icon = heroIcons[guarantee.icon ?? ""];
 
             return (
-              <div key={idx} className="flex items-center justify-center gap-4">
+              <div
+                key={idx}
+                className="flex items-center gap-4 md:justify-center"
+              >
                 <div className="w-fit shrink-0 rounded-full bg-neutral-100 p-3">
                   {Icon ? <Icon className="text-neutral-500" /> : null}
                 </div>
