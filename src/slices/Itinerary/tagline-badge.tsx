@@ -1,6 +1,9 @@
 import { ComponentProps } from "react";
+
 import { Badge } from "@/components/ui/badge";
+
 import { cn } from "@/lib/utils";
+
 import { ItineraryAccordionExperienceItemProps } from "./itinerary-accordion-experiences";
 
 const TaglineBadge = ({

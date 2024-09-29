@@ -1,12 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import _ from "lodash";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { IconCheck, IconZoomQuestion } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import { ExperiencesDocumentData } from "../../../prismicio-types";
+import { useRef } from "react";
+
 import {
   Carousel,
   CarouselContent,
@@ -15,20 +13,26 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { ItineraryAccordionProps } from ".";
-import { TaglineBadge } from "./tagline-badge";
-import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+import { cn } from "@/lib/utils";
+
+import { ExperiencesDocumentData } from "../../../prismicio-types";
+
+import { TaglineBadge } from "./tagline-badge";
+
+import { ItineraryAccordionProps } from ".";
 
 type ExperienceItem = NonNullable<
   ExperiencesDocumentData["experience_list"][0]
@@ -132,7 +136,7 @@ const ItineraryAccordionExperiences = (
 const ItineraryAccordionExperienceItem = (
   props: ItineraryAccordionExperienceItemProps
 ): JSX.Element => {
-  const { picture, iconic, title, description, tagline } = props;
+  const { picture, iconic, title, description } = props;
   const descriptionRef = useRef<HTMLDivElement>(null);
   const isDescriptionClamped =
     descriptionRef?.current &&

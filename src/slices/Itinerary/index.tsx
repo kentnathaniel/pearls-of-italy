@@ -1,13 +1,6 @@
 "use client";
 
 import type * as prismic from "@prismicio/client";
-import {
-  ForwardRefExoticComponent,
-  Fragment,
-  RefAttributes,
-  useMemo,
-} from "react";
-import _ from "lodash";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -19,11 +12,20 @@ import {
   IconProps,
   IconToolsKitchen2,
 } from "@tabler/icons-react";
+import {
+  ForwardRefExoticComponent,
+  Fragment,
+  RefAttributes,
+  useMemo,
+} from "react";
+
+import { ExpandAllButton } from "@/components/ui/expand-all-button";
+
+import { useAccordion } from "@/lib/use-accordion";
 import { cn } from "@/lib/utils";
+
 import { ItineraryAccordionExperiences } from "./itinerary-accordion-experiences";
 import { ItineraryAccordionHeader } from "./itinerary-accordion-header";
-import { ExpandAllButton } from "@/components/ui/expand-all-button";
-import { useAccordion } from "@/lib/use-accordion";
 
 export type ItineraryProps = SliceComponentProps<Content.ItinerarySlice>;
 

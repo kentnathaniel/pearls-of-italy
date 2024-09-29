@@ -1,15 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
-import _ from "lodash";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-
 import { IconArrowRight, IconChevronDown } from "@tabler/icons-react";
+import { useMemo } from "react";
+
 import { cn } from "@/lib/utils";
+
 import { ExperiencesDocumentData } from "../../../prismicio-types";
 
 import { TaglineBadge } from "./tagline-badge";
+
 import { Highlights, ItineraryAccordionProps } from ".";
 
 type ItineraryAccordionHeaderProps = Omit<ItineraryAccordionProps, "idx"> & {

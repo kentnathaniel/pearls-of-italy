@@ -1,5 +1,8 @@
 "use client";
 
+import { Content } from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+
 import {
   Accordion,
   AccordionContent,
@@ -7,9 +10,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ExpandAllButton } from "@/components/ui/expand-all-button";
+
 import { useAccordion } from "@/lib/use-accordion";
-import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 export type FaqProps = SliceComponentProps<Content.FaqSlice>;
 

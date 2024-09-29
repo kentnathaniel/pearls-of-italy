@@ -1,10 +1,12 @@
 "use client";
 
-import ItalyFlag from "@/assets/italy-flag.png";
-import Image from "next/image";
 import { IconMenu2 } from "@tabler/icons-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Image from "next/image";
 import { HTMLAttributes, useEffect, useState } from "react";
+
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
+import ItalyFlag from "@/assets/italy-flag.png";
 import { cn } from "@/lib/utils";
 
 const Navigation = ({ className }: HTMLAttributes<HTMLDivElement>) => {

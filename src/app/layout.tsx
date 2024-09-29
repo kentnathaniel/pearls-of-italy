@@ -1,9 +1,10 @@
 import "./globals.css";
 
-import { Manrope, Playfair_Display } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
-import { repositoryName } from "@/prismicio";
+import { Manrope, Playfair_Display } from "next/font/google";
+
 import { cn } from "@/lib/utils";
+import { repositoryName } from "@/prismicio";
 
 const manrope = Manrope({
   subsets: ["latin"],

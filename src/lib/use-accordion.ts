@@ -8,7 +8,7 @@ const useAccordion = ({ size }: { size: number }) => {
   const isAllOpen = openAccordionIdx.length === size;
 
   const onToggleAllAccordion = () => {
-    setOpenAccordionIdx((prev) =>
+    setOpenAccordionIdx(() =>
       isAllOpen ? [] : Array.from({ length: size }, (_, i) => i)
     );
   };

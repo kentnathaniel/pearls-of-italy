@@ -1,11 +1,11 @@
+import * as prismic from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
 
-import { SliceZone } from "@prismicio/react";
-import * as prismic from "@prismicio/client";
+import { Navbar } from "@/components/layout/navbar";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { Navbar } from "@/components/layout/navbar";
 
 // This component renders your homepage.
 //

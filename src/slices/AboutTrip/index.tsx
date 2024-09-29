@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { IconCheck, IconMapPinFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
+
+import { Button } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
 
 export type AboutTripProps = SliceComponentProps<Content.AboutTripSlice>;
 

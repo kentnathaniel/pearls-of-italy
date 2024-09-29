@@ -1,6 +1,4 @@
-import { ForwardRefExoticComponent, RefAttributes } from "react";
-import { isFilled } from "@prismicio/client";
-import { Content } from "@prismicio/client";
+import { isFilled, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import {
@@ -16,6 +14,7 @@ import {
   IconProps,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
