@@ -30,8 +30,9 @@ const ItineraryAccordionHeader = ({
 
   const emphasizedHighlights = highlights.filter(
     (highlight) =>
-      ["Arrival Transfer", "Welcome"].includes(highlight.title) &&
-      highlight.description
+      ["Arrival Transfer", "Welcome", "Departure Transfer"].includes(
+        highlight.title
+      ) && highlight.description
   );
 
   const uniqueExperience = useMemo(() => {
@@ -94,7 +95,7 @@ const ItineraryAccordionHeader = ({
             </div>
           </div>
           {emphasizedHighlights.length > 0 && (
-            <div className="mt-8 flex gap-4">
+            <div className="mt-2 flex gap-4 lg:mt-8">
               {emphasizedHighlights.map((highlight, idx) => (
                 <p
                   key={idx}

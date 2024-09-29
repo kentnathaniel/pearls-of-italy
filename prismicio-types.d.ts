@@ -689,6 +689,16 @@ export interface ItinerarySliceDefaultPrimaryItineraryListItem {
   arrival_transfer: prismic.KeyTextField;
 
   /**
+   * Departure Transfer field in *Itinerary → Default → Primary → itinerary_list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: itinerary.default.primary.itinerary_list[].departure_transfer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  departure_transfer: prismic.KeyTextField;
+
+  /**
    * Welcome field in *Itinerary → Default → Primary → itinerary_list*
    *
    * - **Field Type**: Text
@@ -717,16 +727,6 @@ export interface ItinerarySliceDefaultPrimaryItineraryListItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   included_meals: prismic.KeyTextField;
-
-  /**
-   * Departure Transfer field in *Itinerary → Default → Primary → itinerary_list*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: itinerary.default.primary.itinerary_list[].departure_transfer
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  departure_transfer: prismic.KeyTextField;
 }
 
 /**

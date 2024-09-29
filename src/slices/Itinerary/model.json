@@ -78,6 +78,13 @@
                   "placeholder": ""
                 }
               },
+              "departure_transfer": {
+                "type": "Text",
+                "config": {
+                  "label": "Departure Transfer",
+                  "placeholder": ""
+                }
+              },
               "welcome": {
                 "type": "Text",
                 "config": {
@@ -96,13 +103,6 @@
                 "type": "Text",
                 "config": {
                   "label": "Included Meals",
-                  "placeholder": ""
-                }
-              },
-              "departure_transfer": {
-                "type": "Text",
-                "config": {
-                  "label": "Departure Transfer",
                   "placeholder": ""
                 }
               }

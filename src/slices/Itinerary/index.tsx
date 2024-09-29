@@ -45,6 +45,7 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
 
   const {
     accomodation,
+    departure_transfer,
     arrival_transfer,
     description,
     experiences,
@@ -61,6 +62,11 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
       {
         title: "Arrival Transfer",
         description: arrival_transfer,
+        icon: IconBus,
+      },
+      {
+        title: "Departure Transfer",
+        description: departure_transfer,
         icon: IconBus,
       },
       {
@@ -82,7 +88,13 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
         icon: IconToolsKitchen2,
       },
     ],
-    [arrival_transfer, accomodation, welcome, included_meals]
+    [
+      arrival_transfer,
+      accomodation,
+      welcome,
+      included_meals,
+      departure_transfer,
+    ]
   );
 
   return (
