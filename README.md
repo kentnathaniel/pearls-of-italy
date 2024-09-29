@@ -5,10 +5,10 @@ Clone of Travalgar's Italy itinerary.
 
 ## Tech Stacks
 
-Language: Typescript
-Framework: NextJS
-CMS: Prismic
-CSS Framework: Tailwind
+Language: Typescript  
+Framework: NextJS  
+CMS: Prismic  
+CSS Framework: Tailwind  
 UI: Shadcn/Radix
 
 ## Demo Link
