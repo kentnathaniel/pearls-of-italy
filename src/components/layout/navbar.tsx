@@ -19,10 +19,12 @@ const Navigation = ({ className }: HTMLAttributes<HTMLDivElement>) => {
 };
 
 const Navbar = () => {
-  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       setShowHeader(window.scrollY <= lastScrollY);
       setLastScrollY(window.scrollY);
