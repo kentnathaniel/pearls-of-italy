@@ -46,7 +46,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto px-8 pt-16 lg:container"
+      className="relative mx-auto px-4 pt-16 lg:container md:px-8"
       id="home-section"
     >
       <div className="flex w-full flex-col gap-16 lg:flex-row">
@@ -61,10 +61,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           )}
         </div>
         <div className="grid h-fit gap-8">
-          <h1 className="text-3xl font-bold">{slice.primary.title}</h1>
-          <p>{slice.primary.description}</p>
+          <h1 className="text-3xl font-bold lg:font-extrabold lg:tracking-wide">
+            {slice.primary.title}
+          </h1>
+          <p className="lg:leading-relaxed lg:tracking-wide">
+            {slice.primary.description}
+          </p>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid gap-8 md:grid-cols-2">
             {keyFeatures.map((feature, idx) => (
               <div key={idx} className="grid gap-2">
                 <div className="flex items-center gap-2">

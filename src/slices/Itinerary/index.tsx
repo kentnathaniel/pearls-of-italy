@@ -105,11 +105,13 @@ const ItineraryAccordionHeader = ({
       >
         <div className="w-full">
           <p className="mb-2 text-sm font-bold text-neutral-500">Day {day}</p>
-          <div className="mb-8 flex flex-col gap-1 xl:flex-row xl:items-center xl:gap-0">
-            <p className="mr-2 text-xl font-bold">{title}</p>
-            <div className="flex gap-1 text-neutral-500">
+          <div className="flex flex-col gap-1 xl:flex-row xl:items-center xl:gap-0">
+            <p className="mb-4 mr-2 text-base font-bold md:text-lg lg:mb-0">
+              {title}
+            </p>
+            <div className="flex flex-wrap gap-1 text-neutral-500">
               {locations.map((v, idx) => (
-                <p key={idx} className="inline-flex items-center">
+                <p key={idx} className="inline-flex items-center text-sm">
                   {v}
                   {idx < locations.length - 1 && (
                     <IconArrowRight className="ml-1 h-4 w-4" />
@@ -118,14 +120,19 @@ const ItineraryAccordionHeader = ({
               ))}
             </div>
           </div>
-          <div className="flex gap-4">
-            {emphasizedHighlights.map((highlight, idx) => (
-              <p key={idx} className="inline-flex gap-2 text-neutral-500">
-                <highlight.icon className="text-neutral-500" />
-                {highlight.title}
-              </p>
-            ))}
-          </div>
+          {emphasizedHighlights.length > 0 && (
+            <div className="mt-8 flex gap-4">
+              {emphasizedHighlights.map((highlight, idx) => (
+                <p
+                  key={idx}
+                  className="inline-flex items-center gap-2 text-sm text-neutral-500"
+                >
+                  <highlight.icon className="h-6 w-6 text-neutral-500" />
+                  {highlight.title}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex shrink-0 items-center">
@@ -307,7 +314,7 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
 
       <div
         className={cn(
-          "overflow-hidden transition-all duration-500 md:px-8",
+          "overflow-hidden px-4 transition-all duration-500 md:px-8",
           isOpen
             ? "h-auto max-h-[5000px] py-8 opacity-100"
             : "max-h-0 py-0 opacity-0"
@@ -320,14 +327,14 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
               <p className="mr-2 text-2xl font-bold">{title}</p>
             </div>
 
-            <p>{description}</p>
+            <p className="text-base leading-7 tracking-wide">{description}</p>
 
             <div className="mt-8 grid gap-8 xl:ml-4">
               {highlights.map((v, idx) => (
                 <Fragment key={idx}>
                   {!!v.description ? (
                     <div key={idx} className="flex gap-2">
-                      <v.icon className="text-primary-500 h-6 w-6" />
+                      <v.icon className="text-primary-500 h-6 w-6 shrink-0" />
                       <div className="xl:flex xl:gap-2">
                         <p className="text-nowrap font-semibold">{v.title}</p>
                         <p>{v.description}</p>
@@ -370,10 +377,10 @@ const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto px-8 pt-32 lg:container"
+      className="relative mx-auto pt-32 lg:container sm:px-8"
       id="itinerary-section"
     >
-      <div className="mb-12">
+      <div className="mb-12 px-4 text-center md:px-0 md:text-left">
         <h1 className="mb-2 text-3xl font-bold">{slice.primary.title}</h1>
         <p className="text-neutral-500">{slice.primary.caption}</p>
       </div>

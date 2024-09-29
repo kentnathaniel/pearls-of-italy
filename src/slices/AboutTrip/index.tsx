@@ -79,7 +79,7 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto px-8 pt-32 lg:container"
+      className="relative mx-auto px-4 pt-32 lg:container md:px-8"
       id="about-section"
     >
       <h1 className="mb-12 text-center text-3xl font-bold md:text-left">
