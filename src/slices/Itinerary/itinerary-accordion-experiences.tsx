@@ -22,6 +22,13 @@ import {
 } from "@/components/ui/tooltip";
 import { ItineraryAccordionProps } from ".";
 import { TaglineBadge } from "./tagline-badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 type ExperienceItem = NonNullable<
   ExperiencesDocumentData["experience_list"][0]
@@ -31,6 +38,65 @@ type ItineraryAccordionExperiencesProps =
   ItineraryAccordionProps["data"]["experiences"];
 
 export type ItineraryAccordionExperienceItemProps = ExperienceItem;
+
+const SeeMoreDialog = (
+  props: ItineraryAccordionExperienceItemProps
+): JSX.Element => {
+  const { description, picture, iconic, title, adult_pricing = 0 } = props;
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <p className="mb-4 w-fit cursor-pointer border-b border-b-red-200 text-sm font-bold hover:border-b-red-500">
+          See more
+        </p>
+      </DialogTrigger>
+      <DialogContent className="!container lg:!max-w-[90vw] lg:!px-24">
+        <DialogHeader className="!space-y-0 text-2xl font-extrabold">
+          Tour Highlights
+        </DialogHeader>
+        <DialogDescription className="-mt-4 flex items-center gap-2 text-lg">
+          {title}
+          <TaglineBadge className={cn(!iconic && "border")} {...props} />
+        </DialogDescription>
+        <div className="relative mx-auto mb-2 h-[50vh] w-full max-w-screen-md">
+          <PrismicNextImage
+            alt=""
+            field={picture}
+            fill
+            className="pointer-events-none select-none rounded-md object-cover"
+          />
+        </div>
+        <div className="flex flex-col gap-16 lg:flex-row">
+          <div>
+            <p className="text-xl font-bold">
+              {iconic ? "Highlight Details" : "Experience Info"}
+            </p>
+            <p className="tracking-wide">{description}</p>
+          </div>
+          {!iconic && (
+            <div className="w-full shrink-0 lg:w-[40%]">
+              <p className="mb-4 text-xl font-bold">Pricing Info</p>
+              <div>
+                <p className="font-bold">Adults</p>
+                <p className="text-xl font-bold">
+                  {adult_pricing ? `€${adult_pricing?.toFixed(2)}` : "-"}
+                </p>
+              </div>
+              <div className="mt-4">
+                <p className="mb-2 text-lg font-bold">How to book?</p>
+                <p>
+                  Optional Experiences are enhancements to your tour and can be
+                  booked through your Travel Director while on tour.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const ItineraryAccordionExperiences = (
   props: ItineraryAccordionExperiencesProps
@@ -92,11 +158,7 @@ const ItineraryAccordionExperienceItem = (
           >
             {description}
           </p>
-          {isDescriptionClamped && (
-            <p className="mb-4 w-fit cursor-pointer border-b border-b-red-200 text-sm font-bold hover:border-b-red-500">
-              See more
-            </p>
-          )}
+          {isDescriptionClamped && <SeeMoreDialog {...props} />}
           <p
             className={cn(
               "mt-auto inline-flex items-center gap-2 text-sm font-bold",

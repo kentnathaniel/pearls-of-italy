@@ -62,6 +62,13 @@
                 "label": "Tagline Badge Color",
                 "placeholder": ""
               }
+            },
+            "adult_pricing": {
+              "type": "Number",
+              "config": {
+                "label": "Adult Pricing",
+                "placeholder": ""
+              }
             }
           }
         }

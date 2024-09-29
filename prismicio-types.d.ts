@@ -68,6 +68,16 @@ export interface ExperiencesDocumentDataExperienceListItem {
    * - **Documentation**: https://prismic.io/docs/field#color
    */
   tagline_badge_color: prismic.ColorField;
+
+  /**
+   * Adult Pricing field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].adult_pricing
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  adult_pricing: prismic.NumberField;
 }
 
 /**
