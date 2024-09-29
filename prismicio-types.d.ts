@@ -389,6 +389,86 @@ type FaqSliceVariation = FaqSliceDefault;
 export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
 
 /**
+ * Item in *Hero → Default → Primary → Key Features*
+ */
+export interface HeroSliceDefaultPrimaryKeyFeaturesItem {
+  /**
+   * Title field in *Hero → Default → Primary → Key Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.key_features[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Hero → Default → Primary → Key Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.key_features[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Icon field in *Hero → Default → Primary → Key Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.key_features[].icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon: prismic.KeyTextField;
+
+  /**
+   * Tooltip field in *Hero → Default → Primary → Key Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.key_features[].tooltip
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tooltip: prismic.KeyTextField;
+
+  /**
+   * Link field in *Hero → Default → Primary → Key Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.key_features[].link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Hero → Default → Primary → Guarantees*
+ */
+export interface HeroSliceDefaultPrimaryGuaranteesItem {
+  /**
+   * Icon field in *Hero → Default → Primary → Guarantees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.guarantees[].icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon: prismic.KeyTextField;
+
+  /**
+   * Title field in *Hero → Default → Primary → Guarantees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.guarantees[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -413,44 +493,46 @@ export interface HeroSliceDefaultPrimary {
   description: prismic.KeyTextField;
 
   /**
-   * Travel field in *Hero → Default → Primary*
+   * Illustration field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.travel
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: hero.default.primary.illustration
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  travel: prismic.KeyTextField;
+  illustration: prismic.ImageField<never>;
 
   /**
-   * Accomodation field in *Hero → Default → Primary*
+   * Key Features field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.accomodation
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: hero.default.primary.key_features[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  accomodation: prismic.KeyTextField;
+  key_features: prismic.GroupField<
+    Simplify<HeroSliceDefaultPrimaryKeyFeaturesItem>
+  >;
 
   /**
-   * Meals field in *Hero → Default → Primary*
+   * CTA Book Title field in *Hero → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.meals
+   * - **API ID Path**: hero.default.primary.cta_book_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  meals: prismic.KeyTextField;
+  cta_book_title: prismic.KeyTextField;
 
   /**
-   * Itinerary field in *Hero → Default → Primary*
+   * CTA Book Description field in *Hero → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.itinerary
+   * - **API ID Path**: hero.default.primary.cta_book_description
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  itinerary: prismic.KeyTextField;
+  cta_book_description: prismic.KeyTextField;
 
   /**
    * Trip code field in *Hero → Default → Primary*
@@ -463,14 +545,26 @@ export interface HeroSliceDefaultPrimary {
   trip_code: prismic.KeyTextField;
 
   /**
-   * Illustration field in *Hero → Default → Primary*
+   * Guarantees field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.illustration
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: hero.default.primary.guarantees[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  illustration: prismic.ImageField<never>;
+  guarantees: prismic.GroupField<
+    Simplify<HeroSliceDefaultPrimaryGuaranteesItem>
+  >;
+
+  /**
+   * CTA Book Local Currency field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.cta_book_local_currency
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  cta_book_local_currency: prismic.RichTextField;
 }
 
 /**
@@ -676,14 +770,14 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig,
+      options?: prismic.ClientConfig
     ): prismic.Client<AllDocumentTypes>;
   }
 
   interface CreateWriteClient {
     (
       repositoryNameOrEndpoint: string,
-      options: prismic.WriteClientConfig,
+      options: prismic.WriteClientConfig
     ): prismic.WriteClient<AllDocumentTypes>;
   }
 
@@ -712,6 +806,8 @@ declare module "@prismicio/client" {
       FaqSliceVariation,
       FaqSliceDefault,
       HeroSlice,
+      HeroSliceDefaultPrimaryKeyFeaturesItem,
+      HeroSliceDefaultPrimaryGuaranteesItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,

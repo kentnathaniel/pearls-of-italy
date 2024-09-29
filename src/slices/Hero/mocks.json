@@ -13,33 +13,12 @@
 				"type": "Text",
 				"value": "Discover the Best of Italy, from the ancient treasures of Rome to Renaissance Florence and everything in between. Imagine staying overnight in a renovated Franciscan monastery in Assisi, lapping up the chic lifestyle on Capri, and taking a private guided visit to Pompeii to see a Roman city frozen in time."
 			},
-			"travel": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "13 days, 2 countries and 15 cities"
-			},
-			"accomodation": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "12 nights"
-			},
-			"meals": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "12 Breakfasts, 6 Dinners"
-			},
-			"itinerary": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "View day-by-day trip itinerary"
-			},
 			"trip_code": {
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "ITBO"
 			},
 			"illustration": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
@@ -57,7 +36,107 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"guarantees": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "pig",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "swam",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"key_features": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "mud",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "all",
+									"type": "Text"
+								}
+							],
+							[
+								"icon",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "minerals",
+									"type": "Text"
+								}
+							],
+							[
+								"tooltip",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "furniture",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "case",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"cta_book_title": {
+				"__TYPE__": "FieldContent",
+				"value": "hat",
+				"type": "Text"
+			},
+			"cta_book_description": {
+				"__TYPE__": "FieldContent",
+				"value": "out",
+				"type": "Text"
+			},
+			"cta_book_local_currency": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore nisi eu ullamco irure est fugiat commodo consequat sit."
+						}
+					}
+				]
 			}
 		},
 		"items": []

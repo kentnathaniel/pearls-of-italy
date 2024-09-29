@@ -43,10 +43,10 @@ export default async function Index() {
               alt="nav-logo"
               src={ItalyFlag}
               fill
-              className="-z-10 opacity-30"
+              className="-z-10 opacity-15"
             />
-            <p className="text-2xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)]">
-              Pearls of Italy
+            <p className="font-display text-2xl font-bold tracking-widest [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)]">
+              PEARLS OF ITALY
             </p>
           </div>
           <ul className="flex gap-8 font-semibold">

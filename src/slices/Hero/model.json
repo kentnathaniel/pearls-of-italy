@@ -26,31 +26,69 @@
             "placeholder": ""
           }
         },
-        "travel": {
+        "illustration": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "key_features": {
+          "type": "Group",
+          "config": {
+            "label": "Key Features",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              },
+              "icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": ""
+                }
+              },
+              "tooltip": {
+                "type": "Text",
+                "config": {
+                  "label": "Tooltip",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Text",
+                "config": {
+                  "label": "Link",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "cta_book_title": {
           "type": "Text",
           "config": {
-            "label": "Travel",
+            "label": "CTA Book Title",
             "placeholder": ""
           }
         },
-        "accomodation": {
+        "cta_book_description": {
           "type": "Text",
           "config": {
-            "label": "Accomodation",
-            "placeholder": ""
-          }
-        },
-        "meals": {
-          "type": "Text",
-          "config": {
-            "label": "Meals",
-            "placeholder": ""
-          }
-        },
-        "itinerary": {
-          "type": "Text",
-          "config": {
-            "label": "Itinerary",
+            "label": "CTA Book Description",
             "placeholder": ""
           }
         },
@@ -61,12 +99,36 @@
             "placeholder": ""
           }
         },
-        "illustration": {
-          "type": "Image",
+        "guarantees": {
+          "type": "Group",
           "config": {
-            "label": "Illustration",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Guarantees",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "cta_book_local_currency": {
+          "type": "StructuredText",
+          "config": {
+            "label": "CTA Book Local Currency",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

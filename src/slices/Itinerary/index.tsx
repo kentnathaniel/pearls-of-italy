@@ -23,7 +23,6 @@ import {
   IconChevronDown,
   IconHeartHandshake,
   IconProps,
-  IconQuestionMark,
   IconToolsKitchen2,
   IconZoomQuestion,
 } from "@tabler/icons-react";
@@ -354,6 +353,7 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
               )}
             >
               <PrismicNextImage
+                alt=""
                 field={illustration}
                 fill
                 className="pointer-events-none select-none rounded-md object-cover"
