@@ -39,13 +39,15 @@ export default async function Index() {
       <nav className="p-4 shadow-sm">
         <div className="mx-auto flex justify-between lg:container">
           <div className="relative">
-            <Image
-              alt="nav-logo"
-              src={ItalyFlag}
-              fill
-              className="-z-10 opacity-15"
-            />
-            <p className="font-display text-2xl font-bold tracking-widest [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)]">
+            <div className="absolute h-full w-[100px]">
+              <Image
+                alt="nav-logo"
+                src={ItalyFlag}
+                fill
+                className="-z-10 opacity-15"
+              />
+            </div>
+            <p className="font-display ml-8 text-2xl font-bold tracking-widest [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)]">
               PEARLS OF ITALY
             </p>
           </div>
