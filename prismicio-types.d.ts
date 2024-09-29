@@ -48,6 +48,26 @@ export interface ExperiencesDocumentDataExperienceListItem {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   iconic: prismic.BooleanField;
+
+  /**
+   * Tagline field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Tagline Badge Color field in *Experiences → Experience List*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiences.experience_list[].tagline_badge_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tagline_badge_color: prismic.ColorField;
 }
 
 /**

@@ -43,11 +43,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-type Highlights = {
-  title: string;
-  description: prismic.KeyTextField;
-  icon: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
-}[];
+export type ItineraryProps = SliceComponentProps<Content.ItinerarySlice>;
 
 type ItineraryAccordionProps = {
   data: NonNullable<ItineraryProps["slice"]["primary"]["itinerary_list"][0]>;
@@ -56,9 +52,53 @@ type ItineraryAccordionProps = {
   onToggleAccordion: () => void;
 };
 
+type Highlights = {
+  title: string;
+  description: prismic.KeyTextField;
+  icon: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
+  condition?: string | null;
+}[];
+
 type ItineraryAccordionHeaderProps = Omit<ItineraryAccordionProps, "idx"> & {
   highlights: Highlights;
   day: number;
+  data: ItineraryAccordionProps["data"];
+};
+
+type ExperienceItem = NonNullable<
+  ExperiencesDocumentData["experience_list"][0]
+>;
+
+type ItineraryAccordionExperiencesProps =
+  ItineraryAccordionProps["data"]["experiences"];
+
+type ItineraryAccordionExperienceItemProps = ExperienceItem;
+
+const TaglineBadge = ({
+  iconic,
+  tagline,
+  tagline_badge_color,
+}: Partial<ItineraryAccordionExperienceItemProps>): JSX.Element => {
+  return (
+    <Badge
+      variant="outline"
+      className={cn(
+        "rounded-sm border-0 font-bold",
+        iconic ? "bg-orange-950 text-white" : "bg-white text-black"
+      )}
+      style={{
+        ...(tagline_badge_color && {
+          backgroundColor: tagline_badge_color,
+        }),
+      }}
+    >
+      {!!tagline
+        ? tagline
+        : iconic
+          ? "Iconic Experience"
+          : "Optional Experience"}
+    </Badge>
+  );
 };
 
 const ItineraryAccordionHeader = ({
@@ -68,7 +108,7 @@ const ItineraryAccordionHeader = ({
   data,
   day,
 }: ItineraryAccordionHeaderProps): JSX.Element => {
-  const { illustration, title, location } = data;
+  const { illustration, title, location, experiences } = data;
   const locations = location?.split(",") ?? [];
 
   const emphasizedHighlights = highlights.filter(
@@ -76,6 +116,20 @@ const ItineraryAccordionHeader = ({
       ["Arrival Transfer", "Welcome"].includes(highlight.title) &&
       highlight.description
   );
+
+  const uniqueExperience = useMemo(() => {
+    if (
+      !isFilled.contentRelationship<
+        "experiences",
+        string,
+        ExperiencesDocumentData
+      >(experiences)
+    ) {
+      return null;
+    }
+
+    return experiences.data?.experience_list.find((v) => !!v.tagline);
+  }, [experiences]);
 
   return (
     <div
@@ -103,7 +157,10 @@ const ItineraryAccordionHeader = ({
         )}
       >
         <div className="w-full">
-          <p className="mb-2 text-sm font-bold text-neutral-500">Day {day}</p>
+          <div className="mb-2 flex items-center gap-4">
+            <p className="text-sm font-bold text-neutral-500">Day {day} </p>
+            {!!uniqueExperience && <TaglineBadge {...uniqueExperience} />}
+          </div>
           <div className="flex flex-col gap-1 xl:flex-row xl:items-center xl:gap-0">
             <p className="mb-4 mr-2 text-base font-bold md:text-lg lg:mb-0">
               {title}
@@ -150,11 +207,8 @@ const ItineraryAccordionHeader = ({
   );
 };
 
-type ItineraryAccodionExperiencesProps =
-  ItineraryAccordionProps["data"]["experiences"];
-
 const ItineraryAccodionExperiences = (
-  props: ItineraryAccodionExperiencesProps
+  props: ItineraryAccordionExperiencesProps
 ): JSX.Element => {
   if (
     !isFilled.contentRelationship<
@@ -184,12 +238,10 @@ const ItineraryAccodionExperiences = (
   );
 };
 
-const ItineraryAccordionExperienceItem = ({
-  picture,
-  iconic,
-  title,
-  description,
-}: NonNullable<ExperiencesDocumentData["experience_list"][0]>): JSX.Element => {
+const ItineraryAccordionExperienceItem = (
+  props: ItineraryAccordionExperienceItemProps
+): JSX.Element => {
+  const { picture, iconic, title, description, tagline } = props;
   const descriptionRef = useRef<HTMLDivElement>(null);
   const isDescriptionClamped =
     descriptionRef?.current &&
@@ -204,15 +256,9 @@ const ItineraryAccordionExperienceItem = ({
           fill={true}
           className="pointer-events-none !relative !h-[200px] !w-full select-none rounded-t-md object-cover"
         />
-        <Badge
-          variant="outline"
-          className={cn(
-            "absolute left-2 top-2 rounded-sm border-0 font-bold",
-            iconic ? "bg-orange-950 text-white" : "bg-white text-black"
-          )}
-        >
-          {iconic ? "Iconic Experience" : "Optional Experience"}
-        </Badge>
+        <div className="absolute left-2 top-2">
+          <TaglineBadge {...props} />
+        </div>
         <div className="flex grow flex-col gap-4 p-4">
           <p className="font-bold">{title}</p>
           <p
@@ -294,6 +340,9 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
         title: "Accommodation",
         description: accomodation,
         icon: IconBedFilled,
+        condition: accomodation?.includes("/")
+          ? "Your hotel will be dependent on your departure date"
+          : null,
       },
       {
         title: "Included Meals",
@@ -329,14 +378,23 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
             <p className="text-base leading-7 tracking-wide">{description}</p>
 
             <div className="mt-8 grid gap-8 xl:ml-4">
-              {highlights.map((v, idx) => (
+              {highlights.map((highlight, idx) => (
                 <Fragment key={idx}>
-                  {!!v.description ? (
+                  {!!highlight.description ? (
                     <div key={idx} className="flex gap-2">
-                      <v.icon className="text-primary-500 h-6 w-6 shrink-0" />
-                      <div className="xl:flex xl:gap-2">
-                        <p className="text-nowrap font-semibold">{v.title}</p>
-                        <p>{v.description}</p>
+                      <highlight.icon className="text-primary-500 h-6 w-6 shrink-0" />
+                      <div>
+                        <div className="xl:flex xl:gap-2">
+                          <p className="text-nowrap font-semibold">
+                            {highlight.title}
+                          </p>
+                          <p>{highlight.description}</p>
+                        </div>
+                        {!!highlight.condition && (
+                          <p className="mt-1 text-xs text-neutral-500">
+                            {highlight.condition}
+                          </p>
+                        )}
                       </div>
                     </div>
                   ) : null}
@@ -367,8 +425,6 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
     </div>
   );
 };
-
-export type ItineraryProps = SliceComponentProps<Content.ItinerarySlice>;
 
 const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
   const [openItinerary, setOpenItinerary] = useState<number[]>([]);

@@ -101,7 +101,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         </div>
       </div>
       <div className="my-16 flex w-full">
-        <div className="mx-auto grid grid-cols-3 gap-16">
+        <div className="mx-auto grid gap-16 md:grid-cols-3">
           {slice.primary.guarantees.map((guarantee, idx) => {
             const Icon = heroIcons[guarantee.icon ?? ""];
 
@@ -118,7 +118,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       </div>
 
       {slice.primary.cta_book_local_currency && (
-        <div className="w-full rounded-md bg-green-900 py-8 text-center text-white [&_a:hover]:border-red-500 [&_a]:border-b [&_a]:border-red-200">
+        <div className="w-full rounded-md bg-green-900 p-4 text-center text-white md:p-8 [&_a:hover]:border-red-500 [&_a]:border-b [&_a]:border-red-200">
           <PrismicRichText field={slice.primary.cta_book_local_currency} />
         </div>
       )}

@@ -48,6 +48,20 @@
                 "placeholder_true": "true",
                 "default_value": true
               }
+            },
+            "tagline": {
+              "type": "Text",
+              "config": {
+                "label": "Tagline",
+                "placeholder": ""
+              }
+            },
+            "tagline_badge_color": {
+              "type": "Color",
+              "config": {
+                "label": "Tagline Badge Color",
+                "placeholder": ""
+              }
             }
           }
         }
