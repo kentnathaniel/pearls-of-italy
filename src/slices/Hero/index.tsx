@@ -46,10 +46,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto px-4 pt-16 lg:container md:px-8"
+      className="relative mx-auto px-4 pt-8 lg:container lg:px-8 lg:pt-16"
       id="home-section"
     >
-      <div className="flex w-full flex-col gap-16 lg:flex-row">
+      <div className="flex w-full flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="relative h-[400px] w-[100%] shrink-0 overflow-hidden rounded-md lg:h-auto lg:w-[40%]">
           {isFilled.image(heroIllustration) && (
             <PrismicNextImage
@@ -68,7 +68,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             {slice.primary.description}
           </p>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 pl-4 md:grid-cols-2 md:pl-0">
             {keyFeatures.map((feature, idx) => (
               <div key={idx} className="grid gap-2">
                 <div className="flex items-center gap-2">

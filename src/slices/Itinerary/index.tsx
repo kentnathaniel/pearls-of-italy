@@ -377,7 +377,7 @@ const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative mx-auto pt-32 lg:container sm:px-8"
+      className="relative mx-auto pt-32 lg:container md:px-4 lg:px-8"
       id="itinerary-section"
     >
       <div className="mb-12 px-4 text-center md:px-0 md:text-left">
