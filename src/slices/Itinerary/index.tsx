@@ -193,6 +193,7 @@ const Itinerary = ({ slice }: ItineraryProps): JSX.Element => {
         isAllOpen={isAllOpen}
         onToggle={onToggleAllAccordion}
         className="mr-4 md:mr-0"
+        text="all days"
       />
       <div className="grid md:gap-8">
         {slice.primary.itinerary_list.map((item, idx) => (

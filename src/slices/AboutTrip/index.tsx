@@ -95,6 +95,7 @@ const AboutTrip = ({ slice }: AboutTripProps): JSX.Element => {
         icon={IconMapPinFilled}
       />
       <Highlights
+        className="mb-0"
         title="Travel highlights"
         highlights={slice.primary.travel_highlights}
         bgColor="bg-red-700"

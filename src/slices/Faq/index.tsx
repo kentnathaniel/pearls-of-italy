@@ -30,7 +30,7 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
       className="relative mx-auto mb-16 px-4 pt-32 lg:container md:px-8"
       id="faq-section"
     >
-      <h1 className="mb-12 text-3xl font-bold">{slice.primary.title}</h1>
+      <h1 className="mb-8 text-3xl font-bold">{slice.primary.title}</h1>
       <ExpandAllButton isAllOpen={isAllOpen} onToggle={onToggleAllAccordion} />
       <Accordion
         type="multiple"
