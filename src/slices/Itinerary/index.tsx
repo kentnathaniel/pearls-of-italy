@@ -5,9 +5,7 @@ import {
   ForwardRefExoticComponent,
   Fragment,
   RefAttributes,
-  useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import _ from "lodash";
@@ -16,297 +14,31 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import {
   Icon,
-  IconArrowRight,
   IconBedFilled,
   IconBus,
-  IconCheck,
-  IconChevronDown,
   IconHeartHandshake,
   IconProps,
   IconToolsKitchen2,
-  IconZoomQuestion,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { ExperiencesDocumentData } from "../../../prismicio-types";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Badge } from "@/components/ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { ItineraryAccordionExperiences } from "./itinerary-accordion-experiences";
+import { ItineraryAccordionHeader } from "./itinerary-accordion-header";
 
 export type ItineraryProps = SliceComponentProps<Content.ItinerarySlice>;
 
-type ItineraryAccordionProps = {
+export type ItineraryAccordionProps = {
   data: NonNullable<ItineraryProps["slice"]["primary"]["itinerary_list"][0]>;
   idx: number;
   isOpen: boolean;
   onToggleAccordion: () => void;
 };
 
-type Highlights = {
+export type Highlights = {
   title: string;
   description: prismic.KeyTextField;
   icon: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
   condition?: string | null;
 }[];
-
-type ItineraryAccordionHeaderProps = Omit<ItineraryAccordionProps, "idx"> & {
-  highlights: Highlights;
-  day: number;
-  data: ItineraryAccordionProps["data"];
-};
-
-type ExperienceItem = NonNullable<
-  ExperiencesDocumentData["experience_list"][0]
->;
-
-type ItineraryAccordionExperiencesProps =
-  ItineraryAccordionProps["data"]["experiences"];
-
-type ItineraryAccordionExperienceItemProps = ExperienceItem;
-
-const TaglineBadge = ({
-  iconic,
-  tagline,
-  tagline_badge_color,
-}: Partial<ItineraryAccordionExperienceItemProps>): JSX.Element => {
-  return (
-    <Badge
-      variant="outline"
-      className={cn(
-        "rounded-sm border-0 font-bold",
-        iconic ? "bg-orange-950 text-white" : "bg-white text-black"
-      )}
-      style={{
-        ...(tagline_badge_color && {
-          backgroundColor: tagline_badge_color,
-        }),
-      }}
-    >
-      {!!tagline
-        ? tagline
-        : iconic
-          ? "Iconic Experience"
-          : "Optional Experience"}
-    </Badge>
-  );
-};
-
-const ItineraryAccordionHeader = ({
-  onToggleAccordion,
-  isOpen,
-  highlights,
-  data,
-  day,
-}: ItineraryAccordionHeaderProps): JSX.Element => {
-  const { illustration, title, location, experiences } = data;
-  const locations = location?.split(",") ?? [];
-
-  const emphasizedHighlights = highlights.filter(
-    (highlight) =>
-      ["Arrival Transfer", "Welcome"].includes(highlight.title) &&
-      highlight.description
-  );
-
-  const uniqueExperience = useMemo(() => {
-    if (
-      !isFilled.contentRelationship<
-        "experiences",
-        string,
-        ExperiencesDocumentData
-      >(experiences)
-    ) {
-      return null;
-    }
-
-    return experiences.data?.experience_list.find((v) => !!v.tagline);
-  }, [experiences]);
-
-  return (
-    <div
-      className="z-10 flex w-full cursor-pointer"
-      onClick={onToggleAccordion}
-    >
-      <div
-        className={cn(
-          "hidden shrink-0 transition-all duration-500 md:block",
-          isOpen ? "w-0 opacity-0" : "w-[200px] opacity-100"
-        )}
-      >
-        <PrismicNextImage
-          alt=""
-          field={illustration}
-          fill={true}
-          className="pointer-events-none !relative !h-full !w-[200px] select-none object-cover"
-        />
-      </div>
-
-      <div
-        className={cn(
-          "flex w-full p-4 transition-all duration-500 lg:p-8",
-          isOpen ? "bg-neutral-100" : "bg-white"
-        )}
-      >
-        <div className="w-full">
-          <div className="mb-2 flex items-center gap-4">
-            <p className="text-sm font-bold text-neutral-500">Day {day} </p>
-            {!!uniqueExperience && <TaglineBadge {...uniqueExperience} />}
-          </div>
-          <div className="flex flex-col gap-1 xl:flex-row xl:items-center xl:gap-0">
-            <p className="mb-4 mr-2 text-base font-bold md:text-lg lg:mb-0">
-              {title}
-            </p>
-            <div className="flex flex-wrap gap-1 text-neutral-500">
-              {locations.map((v, idx) => (
-                <p key={idx} className="inline-flex items-center text-sm">
-                  {v}
-                  {idx < locations.length - 1 && (
-                    <IconArrowRight className="ml-1 h-4 w-4" />
-                  )}
-                </p>
-              ))}
-            </div>
-          </div>
-          {emphasizedHighlights.length > 0 && (
-            <div className="mt-8 flex gap-4">
-              {emphasizedHighlights.map((highlight, idx) => (
-                <p
-                  key={idx}
-                  className="inline-flex items-center gap-2 text-sm text-neutral-500"
-                >
-                  <highlight.icon className="h-6 w-6 text-neutral-500" />
-                  {highlight.title}
-                </p>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="flex shrink-0 items-center">
-          <p className="mr-2 hidden lg:block">
-            {isOpen ? "See less" : "See more"}
-          </p>
-          <IconChevronDown
-            className={cn(
-              "transition-all duration-500",
-              isOpen ? "rotate-180" : "rotate-0"
-            )}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ItineraryAccodionExperiences = (
-  props: ItineraryAccordionExperiencesProps
-): JSX.Element => {
-  if (
-    !isFilled.contentRelationship<
-      "experiences",
-      string,
-      ExperiencesDocumentData
-    >(props)
-  )
-    return <></>;
-
-  return (
-    <div className="my-12 w-full">
-      <p className="mb-8 text-2xl font-bold">
-        Included and optional experiences
-      </p>
-
-      <Carousel className="overflow-y-visible">
-        <CarouselPrevious className="-right-16 -top-16 left-[initial]" />
-        <CarouselNext className="-top-16 right-0" />
-        <CarouselContent className="-ml-4 overflow-y-visible md:-ml-8">
-          {props.data?.experience_list.map((experience, idx) => (
-            <ItineraryAccordionExperienceItem key={idx} {...experience} />
-          ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
-  );
-};
-
-const ItineraryAccordionExperienceItem = (
-  props: ItineraryAccordionExperienceItemProps
-): JSX.Element => {
-  const { picture, iconic, title, description, tagline } = props;
-  const descriptionRef = useRef<HTMLDivElement>(null);
-  const isDescriptionClamped =
-    descriptionRef?.current &&
-    descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight;
-
-  return (
-    <CarouselItem className="pl-4 md:basis-1/2 md:pl-8 xl:basis-1/3">
-      <div className="relative flex h-full flex-col rounded-md border">
-        <PrismicNextImage
-          alt=""
-          field={picture}
-          fill={true}
-          className="pointer-events-none !relative !h-[200px] !w-full select-none rounded-t-md object-cover"
-        />
-        <div className="absolute left-2 top-2">
-          <TaglineBadge {...props} />
-        </div>
-        <div className="flex grow flex-col gap-4 p-4">
-          <p className="font-bold">{title}</p>
-          <p
-            className="line-clamp-3 text-sm leading-relaxed"
-            ref={descriptionRef}
-          >
-            {description}
-          </p>
-          {isDescriptionClamped && (
-            <p className="mb-4 w-fit cursor-pointer border-b border-b-red-200 text-sm font-bold hover:border-b-red-500">
-              See more
-            </p>
-          )}
-          <p
-            className={cn(
-              "mt-auto inline-flex items-center gap-2 text-sm font-bold",
-              !iconic && "w-full justify-between"
-            )}
-          >
-            {iconic ? (
-              <>
-                <IconCheck />
-                Included With Trip
-              </>
-            ) : (
-              <>
-                Additional cost applies
-                <TooltipProvider>
-                  <Tooltip delayDuration={100}>
-                    <TooltipTrigger>
-                      <IconZoomQuestion />
-                    </TooltipTrigger>
-                    <TooltipContent side="right" className="p-4">
-                      <p className="mb-2 text-sm">Optional experiences</p>
-                      <p className="text-xs font-normal">
-                        Optional experiences are enhancements to your tour
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </>
-            )}
-          </p>
-        </div>
-      </div>
-    </CarouselItem>
-  );
-};
 
 const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
   const { idx, data, isOpen } = props;
@@ -420,7 +152,7 @@ const ItineraryAccordion = (props: ItineraryAccordionProps): JSX.Element => {
           )}
         </div>
 
-        <ItineraryAccodionExperiences {...experiences} />
+        <ItineraryAccordionExperiences {...experiences} />
       </div>
     </div>
   );
