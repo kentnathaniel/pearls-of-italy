@@ -121,8 +121,10 @@ const ItineraryAccordionExperiences = (
       </p>
 
       <Carousel className="overflow-y-visible">
-        <CarouselPrevious className="-top-12 left-[initial] right-12" />
-        <CarouselNext className="-top-12 right-0" />
+        <div className="absolute max-md:-bottom-8 max-md:left-1/2 md:-top-12 md:right-16">
+          <CarouselPrevious className="-left-8" />
+          <CarouselNext />
+        </div>
         <CarouselContent className="-ml-4 overflow-y-visible md:-ml-8">
           {props.data?.experience_list.map((experience, idx) => (
             <ItineraryAccordionExperienceItem key={idx} {...experience} />
